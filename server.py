@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from wsgiref.simple_server import make_server
 import wsgi
 

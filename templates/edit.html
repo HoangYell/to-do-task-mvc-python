@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/js/note.js"></script>
+</head>
+<body>
+
+<img src="/static/image/logo.png" alt="logo"/> <hr>
+<h1>#{{id}} {{work.work_name}}</h1><hr>
+<form id="form_edit" action="/" method="post" enctype="application/x-www-form-urlencoded">
+    <label for="work_name">Work Name</label>
+    <input value="{{work.work_name}}" id="work_name" type="text" name="work_name" style="width: 50%" placeholder="Work Name" required /><br>
+    <div>
+        <label for="starting_date">Starting Date</label>
+        <input value="{{work.starting_date}}" type="date" id="starting_date" name="starting_date" onblur="onDateChange()" required>
+        <span class="validity"></span>
+        <label for="ending_date">Ending Date</label>
+        <input value="{{work.ending_date}}" type="date" id="ending_date" name="ending_date" onblur="onDateChange()" required>
+        <span class="validity"></span>
+    </div>
+    <div>
+        <input type="radio" name="work_status" id="planning" value="Planning"
+        {{("","checked")[work.work_status=="Planning"]}}>
+        <label for="planning">Planning</label>
+        <br>
+        <input type="radio" name="work_status" id="doing" value="Doing"
+        {{("","checked")[work.work_status=="Doing"]}}>
+        <label for="doing">Doing</label>
+        <br>
+        <input type="radio" name="work_status" id="complete" value="Complete"
+        {{("","checked")[work.work_status=="Complete"]}}>
+        <label for="complete">Complete</label>
+        <br>
+    </div>
+    <input type="hidden" id="id" name="id" value={{work.id}}>
+    <input type="submit" value="Update">
+</form>
+</body>
+</html>

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import re
 
 
@@ -84,19 +85,3 @@ class View:
     def render(self, **context):
         rendered = self._template
         return render_template_byres(rendered, context)
-
-
-if __name__ == "__main__":
-    a = open('main.html', 'rb').read()
-    z = render_template_byres(
-        b"{% for x in range(length) %}{{ x }},{% endfor %}",
-        {'length': 4})
-    assert z == b'0,1,2,3,', "Bad render_template_byres()"
-    z = render_template_byres(
-        b"{{x }} {{y}} {{z}}",
-        {'x': 4, 'y': 'q', 'z': b'4'})
-    assert z == b'4 q 4', "Bad render_template_byres()"
-
-    view = View('main.html')
-    assert isinstance(view._template, bytes)
-    assert isinstance(view.render(), bytes)

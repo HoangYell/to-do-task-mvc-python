@@ -1,4 +1,5 @@
-from controller import index
+# -*- coding: utf-8 -*-
+from controller import index, edit, delete
 from router import Router
 from utils import parse_http_x_www_form_urlencoded_post_data
 from utils import parse_http_get_data
@@ -20,6 +21,8 @@ STATIC_ROOT = 'data'
 
 router = Router()
 router.register_controller('/', index)
+router.register_controller('/edit/', edit)
+router.register_controller('/delete/', delete)
 
 
 def application(environ, start_response):
@@ -47,7 +50,7 @@ def application(environ, start_response):
         controller_callback = router.resolve(URI_PATH)
         status, body = controller_callback(REQUEST_METHOD, GET, POST, headers)
         if DEBUG:
-            print("{REQUEST_METHOD} {URI_PATH} {SERVER_PROTOCOL}\n"
+            print("======>\n{REQUEST_METHOD} {URI_PATH} {SERVER_PROTOCOL}\n"
                 "CONTENT_TYPE: {CONTENT_TYPE}; {CONTENT_TYPE_KWARGS}\n"
                 "POST: {POST}\n"
                 "GET: {GET}\n"

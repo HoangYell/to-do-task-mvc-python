@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
 import cgi
+import time
+import datetime
 from urllib.parse import parse_qs
 from warnings import warn
 from wsgiref.headers import Headers
@@ -74,3 +77,34 @@ def get_first_element(dict_, key, default=None):
     if type(val) in (list, tuple) and len(val) > 0:
         val = val[0]
     return val
+
+
+def datetime_from_utc_to_local(utc_datetime):
+    """
+    Convert UTC time to local time
+    """
+    now_timestamp = time.time()
+    offset = datetime.datetime.fromtimestamp(now_timestamp) - datetime.datetime.utcfromtimestamp(now_timestamp)
+    return utc_datetime + offset
+
+
+def get_current_utc_time():
+    """
+    Get current UTC time
+    """
+    return datetime.datetime.utcnow()
+
+
+def get_current_local_iso_time():
+    """
+    Get current local time
+    """
+    return datetime.datetime.now().replace(microsecond=0, second=0).isoformat()
+
+
+def get_limit_local_iso_time():
+    """
+    Get limit local time
+    """
+    limit_year = datetime.datetime.now().year + 100
+    return datetime.datetime.now().replace(microsecond=0, second=0, year=limit_year).isoformat()
