@@ -14,10 +14,8 @@ from utils import parse_http_uri
 #
 # ===========================
 
-
-DEBUG = True
+DEBUG = False
 STATIC_URL = '/static/'
-STATIC_ROOT = 'data'
 
 router = Router()
 router.register_controller('/', index)
@@ -50,7 +48,7 @@ def application(environ, start_response):
         controller_callback = router.resolve(URI_PATH)
         status, body = controller_callback(REQUEST_METHOD, GET, POST, headers)
         if DEBUG:
-            print("======>\n{REQUEST_METHOD} {URI_PATH} {SERVER_PROTOCOL}\n"
+            print("{REQUEST_METHOD} {URI_PATH} {SERVER_PROTOCOL}\n"
                 "CONTENT_TYPE: {CONTENT_TYPE}; {CONTENT_TYPE_KWARGS}\n"
                 "POST: {POST}\n"
                 "GET: {GET}\n"

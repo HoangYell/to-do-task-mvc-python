@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals, print_function, generators, division
 import shelve
 from model import Work
 
@@ -19,10 +18,9 @@ class WorkManager:
         works = []
         for id, data in self._db.items():
             w = Work(data['work_name'], data['starting_date'],
-                     data['ending_date'], data['work_status'])
-            w.id = str(id)
+                     data['ending_date'], data['work_status'], str(id))
             works.append(w)
-        works.sort(key=lambda w: w.starting_date)
+        works.sort(key=lambda w: w.id)
         return works
 
     def save(self, work):

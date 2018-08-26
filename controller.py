@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals, print_function, generators, division
 import json
 from manager import WorkManager
 from model import Work
-from utils import get_first_element, get_current_local_iso_time
+from utils import get_first_element
+from utils import get_current_local_iso_time
 from view import View
 
 
@@ -53,7 +53,7 @@ def edit(method, get, post, headers):
         headers.append(('Location', '/'))
         id = get_first_element(get, 'id', '')
         works_by_id = [w for w in works if w.id == id]
-        if len(works_by_id)>0:
+        if len(works_by_id) > 0:
             body = view.render(id=id, work=works_by_id[0])
         else:
             status = '404 Not Found'
@@ -70,7 +70,7 @@ def delete(method, get, post, headers):
         headers.append(('Location', '/'))
         id = get_first_element(get, 'id', '')
         works_by_id = [w for w in works if w.id == id]
-        if len(works_by_id)>0:
+        if len(works_by_id) > 0:
             body = view.render(id=id, work=works_by_id[0])
         else:
             status = '404 Not Found'
