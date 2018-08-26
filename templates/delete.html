@@ -7,8 +7,7 @@
     <!-- <script src="/static/js/note.js"></script> -->
 </head>
 <body>
-
-<img src="/static/image/logo.png" alt="logo"/> <hr>
+<a href="/"><img src="/static/image/logo.png" alt="logo"/></a><hr>
 <h1>#{{id}} {{work.work_name}}</h1><hr>
 <form id="form_edit" action="/" method="post" enctype="application/x-www-form-urlencoded">
     Are you sure to delete the work: <b>{{work.work_name}}</b><br>
@@ -18,6 +17,9 @@
     <input type="hidden" id="id" name="id" value={{work.id}}>
     <input type="hidden" id="is_delete" name="is_delete" value={{True}}>
     <input type="submit" value="Delete">
+</form>
+<form action="/">
+    <input type="submit" value="Cancel" />
 </form>
 </body>
 </html>

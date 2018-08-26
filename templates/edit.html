@@ -7,8 +7,7 @@
     <script src="/static/js/note.js"></script>
 </head>
 <body>
-
-<img src="/static/image/logo.png" alt="logo"/> <hr>
+<a href="/"><img src="/static/image/logo.png" alt="logo"/></a><hr>
 <h1>#{{id}} {{work.work_name}}</h1><hr>
 <form id="form_edit" action="/" method="post" enctype="application/x-www-form-urlencoded">
     <label for="work_name">Work Name</label>
@@ -37,6 +36,9 @@
     </div>
     <input type="hidden" id="id" name="id" value={{work.id}}>
     <input type="submit" value="Update">
+</form>
+<form action="/">
+    <input type="submit" value="Cancel" />
 </form>
 </body>
 </html>
