@@ -32,12 +32,12 @@ Show the tasks on a calendar view with: Date, Week, Month
 
 ## Technology Stack
 
-* MVC architecture[3]
-* Python 3[0]
-* JQuery[4]
-* Bootstrap 4[5]
-* Shelve[6]
-* Full calendar[7]
+* [MVC architecture][3]
+* [Python 3][0]
+* [JQuery][4]
+* [Bootstrap 4][5]
+* [Shelve][6]
+* [Full calendar][7]
 
 ## Installation Guide
 
@@ -49,5 +49,5 @@ Take a look at our wiki page for a detailed [installation guide][2].
 [3]: https://developer.mozilla.org/en-US/docs/Web/Apps/Fundamentals/Modern_web_app_architecture/MVC_architecture/
 [4]: https://jquery.com/
 [5]: https://getbootstrap.com/docs/4.1/getting-started/introduction/
-[6]: https://docs.python.org/3/library/shelve.html/
+[6]: https://docs.python.org/3/library/shelve.html
 [7]: https://fullcalendar.io/
