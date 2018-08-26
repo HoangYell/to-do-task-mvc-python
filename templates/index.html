@@ -3,55 +3,60 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>To Do List</title>
+    <link rel="shortcut icon" href="/static/image/logo.png" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/static/js/note.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
 <!-- <img src="/static/image/logo.png" alt="logo"/> <hr> -->
-<form id="form_edit" action="/" method="post" enctype="application/x-www-form-urlencoded">
-    <h2>Add A New Task</h2>
-    <label for="work_name">Work Name</label>
-    <input id="work_name" type="text" name="work_name" style="width: 50%" placeholder="Work Name" required /><br>
+<div class="container mt-4 mb-4 px-5">
+    <form id="form_edit" action="/" method="post" enctype="application/x-www-form-urlencoded">
+        <div class="form-group">
+            <h2>Add A New Task</h2>
+            <label for="work_name">Work Name</label>
+            <input class="form-control" id="work_name" type="text" name="work_name" style="width: 50%" placeholder="Work Name" required /><br>
+            <label for="starting_date">Starting Date</label>
+            <input class="form-control" type="date" id="starting_date" name="starting_date" style="width: 50%" onblur="onDateChange()" required><br>
+            <span class="validity"></span>
+            <label for="ending_date">Ending Date</label>
+            <input class="form-control" type="date" id="ending_date" name="ending_date" style="width: 50%" onblur="onDateChange()" required><br>
+            <span class="validity"></span>
+        </div>
+        <div class="form-group">
+            <input type="radio" name="work_status" id="planning" value="Planning" checked>
+            <label for="planning">Planning</label>
+            <br>
+            <input type="radio" name="work_status" id="doing" value="Doing">
+            <label for="doing">Doing</label>
+            <br>
+            <input type="radio" name="work_status" id="complete" value="Complete">
+            <label for="complete">Complete</label>
+            <br>
+            <input type="hidden" id="id" name="id">
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+    </form> <hr>
+    <h2>The List Of Tasks</h2>
+    <a href="/calendar/"><img border="0" alt="calendar" src="/static/image/calendar.png" width="100" height="100"><br>
+        Calendar View
+    </a>
     <div>
-        <label for="starting_date">Starting Date</label>
-        <input type="date" id="starting_date" name="starting_date" onblur="onDateChange()" required>
-        <span class="validity"></span>
-        <label for="ending_date">Ending Date</label>
-        <input type="date" id="ending_date" name="ending_date" onblur="onDateChange()" required>
-        <span class="validity"></span>
+        {% if len(works)>0 %}
+            {% for work in works %}
+            <hr>
+            Work Name: <b>{{work.work_name}}</b><br>
+            From: <b>{{work.starting_date}}</b><br>
+            To: <b>{{work.ending_date}}</b><br>
+            Status: <b>{{work.work_status}}</b><br>
+            <a href="/edit/?id={{work.id}}" class="btn btn-primary">Edit</a>
+            <a href="/delete/?id={{work.id}}" class="btn btn-danger">Delete</a>
+            {% endfor %}
+        {% else %}
+            <i>There is no task to do</i>
+        {% endif %}
     </div>
-    <div>
-        <input type="radio" name="work_status" id="planning" value="Planning" checked>
-        <label for="planning">Planning</label>
-        <br>
-        <input type="radio" name="work_status" id="doing" value="Doing">
-        <label for="doing">Doing</label>
-        <br>
-        <input type="radio" name="work_status" id="complete" value="Complete">
-        <label for="complete">Complete</label>
-        <br>
-    </div>
-    <input type="hidden" id="id" name="id">
-    <input type="submit" value="Submit">
-</form> <hr>
-<h2>The List Of Tasks</h2>
-<a href="/calendar/"><img border="0" alt="calendar" src="/static/image/calendar.png" width="100" height="100"><br>
-    Calendar View
-</a>
-<div>
-    {% if len(works)>0 %}
-        {% for work in works %}
-        <hr>
-        Work Name: <b>{{work.work_name}}</b><br>
-        From: <b>{{work.starting_date}}</b><br>
-        To: <b>{{work.ending_date}}</b><br>
-        Status: <b>{{work.work_status}}</b><br>
-        <a href="/edit/?id={{work.id}}">Edit</a>
-        <a href="/delete/?id={{work.id}}">Delete</a>
-        {% endfor %}
-    {% else %}
-        <i>There is no task to do</i>
-    {% endif %}
 </div>
 </body>
 </html>
