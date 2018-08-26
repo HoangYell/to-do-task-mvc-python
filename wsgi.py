@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from controller import index, edit, delete
+from controller import index, edit, delete, calendar
 from router import Router
 from utils import parse_http_x_www_form_urlencoded_post_data
 from utils import parse_http_get_data
@@ -23,7 +23,7 @@ router = Router()
 router.register_controller('/', index)
 router.register_controller('/edit/', edit)
 router.register_controller('/delete/', delete)
-
+router.register_controller('/calendar/', calendar)
 
 def application(environ, start_response):
     # https://www.python.org/dev/peps/pep-3333/#environ-variables
