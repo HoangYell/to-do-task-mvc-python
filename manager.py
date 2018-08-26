@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, print_function, generators, division
 import shelve
-
 from model import Work
 
 
@@ -50,9 +49,7 @@ class WorkManager:
         if work.id:
             del self._db[work.id]
             self._db.sync()
-            print("xxxxxxxxxxxxxxxxxxxDelete success")
             return True
-        print("xxxxxxxxxxxxxxxxDelete failed")
         return False
 
     def close(self):

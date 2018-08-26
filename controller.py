@@ -3,7 +3,7 @@ from __future__ import unicode_literals, print_function, generators, division
 import json
 from manager import WorkManager
 from model import Work
-from utils import get_first_element, get_current_local_iso_time, get_limit_local_iso_time
+from utils import get_first_element, get_current_local_iso_time
 from view import View
 
 
