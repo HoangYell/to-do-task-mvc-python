@@ -5,11 +5,14 @@ $(document).ready( function() {
   var maxDate = new Date(currentDate)
   maxDate.setFullYear(maxDate.getFullYear() + 100)
 
-  $('#starting_date').val(formatDate(currentDate))
+  if($(location).attr('pathname')==="/") {
+    $('#starting_date').val(formatDate(currentDate))
+    $('#ending_date').val(formatDate(tomorrowDate))
+  }
+
   $("#starting_date")[0].setAttribute("min",formatDate(currentDate))
   $("#starting_date")[0].setAttribute("max",formatDate(maxDate))
 
-  $('#ending_date').val(formatDate(tomorrowDate))
   $("#ending_date")[0].setAttribute("min",formatDate(tomorrowDate))
   $("#ending_date")[0].setAttribute("max",formatDate(maxDate))
 })
