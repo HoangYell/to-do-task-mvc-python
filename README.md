@@ -45,7 +45,7 @@ Take a look at our wiki page for a detailed [installation guide][2].
 
 [0]: https://www.python.org/
 [1]: https://developer.mozilla.org/en-US/docs/Web/Apps/Fundamentals/Modern_web_app_architecture/MVC_architecture/
-[2]: https://github.com/ngohoangyell/ROUND-1-TEST-TOPIC/wiki/Installation-Guide/
+[2]: https://github.com/ngohoangyell/to-do-task-mvc-python/wiki/Installation-Guide/
 [3]: https://developer.mozilla.org/en-US/docs/Web/Apps/Fundamentals/Modern_web_app_architecture/MVC_architecture/
 [4]: https://jquery.com/
 [5]: https://getbootstrap.com/docs/4.1/getting-started/introduction/
